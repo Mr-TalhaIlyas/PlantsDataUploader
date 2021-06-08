@@ -32,9 +32,10 @@ confirm the data class and angle,
 
 ![Screenshot](https://github.com/Mr-TalhaIlyas/PlantsDataUploader/blob/master/screens/img2.png?raw=true)
 
-![Screenshot](https://github.com/hololee/plants_data_uploader/blob/master/screen3.PNG?raw=true)
+![Screenshot](https://github.com/hololee/plants_data_uploader/blob/master/screen3.PNG?raw=true)![Screenshot](https://github.com/Mr-TalhaIlyas/PlantsDataUploader/blob/master/screens/img05.png?raw=true)
 
-![Screenshot](https://github.com/Mr-TalhaIlyas/PlantsDataUploader/blob/master/screens/img4.png?raw=true)![Screenshot](https://github.com/Mr-TalhaIlyas/PlantsDataUploader/blob/master/screens/img5.png?raw=true)
+![Screenshot](https://github.com/Mr-TalhaIlyas/PlantsDataUploader/blob/master/screens/img4.png?raw=true)
+
 
 - ### `.exe` File
 
