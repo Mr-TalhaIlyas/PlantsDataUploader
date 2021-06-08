@@ -27,7 +27,9 @@ Please open the setup.bin file as a text editor and modify it accordingly.
 ![Screenshot](https://github.com/hololee/plants_data_uploader/blob/master/screen1.PNG?raw=true)
 
 ![Screenshot](https://github.com/Mr-TalhaIlyas/PlantsDataUploader/blob/master/screens/img3.png?raw=true)
+
 confirm the data class and angle,
+
 ![Screenshot](https://github.com/Mr-TalhaIlyas/PlantsDataUploader/blob/master/screens/img2.png?raw=true)
 
 ![Screenshot](https://github.com/hololee/plants_data_uploader/blob/master/screen3.PNG?raw=true)
