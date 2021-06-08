@@ -12,7 +12,9 @@
 Data is collected at three different angles as shown in figure below (i.e., 0, 45 and 90 degrees). This program upload the images to the FTP server by renaming each class accordingly, with its corresponding angle.
 ![type](https://github.com/hololee/plants_data_uploader/blob/master/typee.png?raw=true)
 
+- ### `.exe` File
 
+For `.exe` file click the following [Google Drive Link](https://drive.google.com/drive/folders/1PYbKXt1IecuZO_rHEOOolLGP_W7Y8WSM?usp=sharing)
 
 - ### Instruction 
 ~~~
@@ -37,6 +39,4 @@ confirm the data class and angle,
 ![Screenshot](https://github.com/Mr-TalhaIlyas/PlantsDataUploader/blob/master/screens/img4.png?raw=true)
 
 
-- ### `.exe` File
 
-For `.exe` file click the following [Google Drive Link](https://drive.google.com/drive/folders/1PYbKXt1IecuZO_rHEOOolLGP_W7Y8WSM?usp=sharing)
