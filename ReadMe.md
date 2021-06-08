@@ -44,3 +44,6 @@ Please open the setup.bin file as a text editor and modify it accordingly.
 
 ![Screenshot]( https://github.com/Mr-TalhaIlyas/PlantsDataUploader/blob/master/screens/img4.png?raw=true)
 
+- ### `.exe` File
+
+For `.exe` file click the following [Google Drive Link](https://drive.google.com/drive/folders/1PYbKXt1IecuZO_rHEOOolLGP_W7Y8WSM?usp=sharing)
