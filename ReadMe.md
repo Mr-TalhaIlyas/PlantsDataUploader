@@ -2,7 +2,8 @@
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 
-###### [Ver 1.0.4]  
+###### [Ver 1.0.5]  
+- Fixed status check bug.
 - Fixed the korean to english text conversion bug.
 
   
@@ -15,8 +16,20 @@ Data is collected at three different angles as shown in figure below (i.e., 0, 4
 - ### `.exe` File
 
 For `.exe` file click the following [Google Drive Link](https://drive.google.com/drive/folders/1PYbKXt1IecuZO_rHEOOolLGP_W7Y8WSM?usp=sharing)
+- #### Usage
 
-- ### Instruction 
+Inside the `mian` dir locate the `setup.bin` file and change the following lines accordingly,
+
+```
+ip=******.******.******.******
+target_path=/******/
+
+user=******
+pass=******
+name=******
+```
+
+- ### Instruction (`.py` file)
 ~~~
 Please open the setup.bin file as a text editor and modify it accordingly.
 
@@ -34,9 +47,10 @@ confirm the data class and angle,
 
 ![Screenshot](https://github.com/Mr-TalhaIlyas/PlantsDataUploader/blob/master/screens/img2.png?raw=true)
 
-![Screenshot](https://github.com/hololee/plants_data_uploader/blob/master/screen3.PNG?raw=true)![Screenshot](https://github.com/Mr-TalhaIlyas/PlantsDataUploader/blob/master/screens/img05.png?raw=true)
-
 ![Screenshot](https://github.com/Mr-TalhaIlyas/PlantsDataUploader/blob/master/screens/img4.png?raw=true)
+
+![Screenshot](https://github.com/Mr-TalhaIlyas/PlantsDataUploader/blob/master/screens/img6.png?raw=true)
+
 
 
 
