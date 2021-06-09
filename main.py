@@ -11,6 +11,14 @@ from datetime import datetime
 from collections import Counter
 from tabulate import tabulate
 import numpy as np
+import re
+
+numbers = re.compile(r'(\d+)')
+def numericalSort(value):
+    parts = numbers.split(value)
+    parts[1::2] = map(int, parts[1::2])
+    return parts
+
 header = ["Korean", "English"]
 
 k_name = ['기장', '녹두', '들깨', '땅콩', '수수', '옥수수', '조', '참깨', '콩', '팥']
@@ -58,7 +66,7 @@ class FileSearchThread(QThread):
                             if taken_date > self.last_date:
                                 self.last_date = taken_date
 
-                            target_degree = f.split('_')[3]
+                            target_degree = f.split('_')[-2]
 
                             self.user_species_counter[f'{sp} - {target_degree}'] += 1
                 except:
@@ -81,7 +89,7 @@ class SearchingStatusDialog(QtWidgets.QDialog):
         self.settings = settings
         self.setWindowTitle('Your status.')
         self.setWindowIcon(QIcon('res/info.png'))
-        self.resize(300, 50)
+        self.resize(400, 50)
 
         self.layout = QVBoxLayout()
         self.message = QPlainTextEdit("Wait a moment...")
@@ -95,22 +103,49 @@ class SearchingStatusDialog(QtWidgets.QDialog):
 
     def show_status(self):
         print('finish')
-        message_temp = '=' * 44 + '\n'
+        message_temp = '=' * 30 + '\n'
         message_temp += f'{self.settings["name"].upper()} current status.\n'
-        message_temp += '=' * 44 + '\n'
+        message_temp += '=' * 30 + '\n'
         message_temp += f'Last uploaded image taken date : {self.thread.last_date}\n'
-        message_temp += '-' * 44 + '\n'
+        message_temp += '-' * 60 + '\n'
 
         total_val = 0
+        c_type = []
+        s = sorted(e_name, key=numericalSort)
+        f_status = np.concatenate((
+                                    np.asarray(s).reshape(-1,1), 
+                                    np.zeros((len(e_name), 3))
+                                   ), 1)
+        
         for key, value in sorted(self.thread.user_species_counter.items(), reverse=False):
-            message_temp += f"{key} : {value} shots\n"
-            total_val += value
 
-        message_temp += '-' * 44 + '\n'
-        message_temp += f'Total : {total_val} shots\n'
-        message_temp += '=' * 44
+            c_type = key.split('-')[0].strip()
+            deg = key.split('-')[1].strip()
+            
+            x_index = s.index(c_type)
+            if deg == '0':
+                y_index = 1
+            elif deg == '45':
+                y_index = 2
+            elif deg == '90':
+                y_index = 3
+            
+            f_status[x_index, y_index] = value
+            
+            
+            total_val += value
+        
+        headings = ['Crop Type', '0 Degree','45 Degree', '90 Degree']
+        
+        x = tabulate(np.ndarray.tolist(f_status), headers = headings)
+        message_temp2 = '\n' + '=' * 30 + '\n'
+        message_temp2 += f'Total : {total_val} shots\n'
+        message_temp2 += '=' * 30 + '\n'
+
         self.message.setPlainText(message_temp)
-        self.resize(350, 600)
+        self.message.appendPlainText(x)
+        self.message.appendPlainText(message_temp2)
+        self.resize(350, 350)
         self.update()
 
 
@@ -211,7 +246,7 @@ class MainWindow(QMainWindow):
 
             mes = '[IMPORTANT]\n"setup.bin" 파일을 텍스트 에디터로 열어서 알맞게 수정해주세요.\n\n1. 특정 각도, 한 종류의 식물 사진을 특정 디렉터리로 옮깁니다.\n2. "File - select folder"를 클릭해서 사진이 있는 디렉터리를 선택합니다.\n3. 하단의 식물 종류와 각도를 선택하고 upload를 누릅니다.'
             mes_en = '[IMPORTANT]\nPlease open the "setup.bin" file as a text editor and modify it accordingly.\n\n1. Move a picture of a particular angle, one type of plant, to a particular directory.\n2. Click "File - select folder" to select the directory where the pictures are located.\n3. Select the plant type and angle at the bottom and press upload.'
-            self.show_message('Instruction', mes + '\n\n' + mes_en, False)
+            self.show_message('Instruction', mes_en + '\n\n' + mes, False)
 
         else:
             self.show_message('Warning', 'There is a problem with the setup.bin file.\nCheck this file and run again.', True)
@@ -269,17 +304,17 @@ class MainWindow(QMainWindow):
     def show_info(self):
         msgbox = QMessageBox()
         msgbox.setWindowIcon(QIcon('res/info.png'))
-        msgbox.setText('Plants data uploader (1.0.4)\n\n Developed by RobotVision Lab')
+        msgbox.setText('Plants data uploader (1.0.5)\n\n Developed by RobotVision Lab')
         msgbox.show()
         msgbox.exec_()
-    ###########
+    
     def show_class_detail(self):
         msgbox = QMessageBox()
         msgbox.setWindowIcon(QIcon('res/info.png'))
-        msgbox.setText(tabulate(np.ndarray.tolist(result), headers = header, tablefmt="youtrack"))
+        msgbox.setText(tabulate(np.ndarray.tolist(result), headers = header, showindex="always"))
         msgbox.show()
         msgbox.exec_()
-    ########
+    
     def show_dialog(self):
         get_path = QFileDialog.getExistingDirectory(self, 'select target folder', './')
         if get_path:
@@ -373,7 +408,7 @@ class MainWindow(QMainWindow):
         self.f.close()
         self.statusBar().showMessage('Finish', 5000)
         self.progressbar.reset()
-        self.show_message('Finish', 'Upload finished!', False)
+        self.show_message('Finish', 'Upload finished! \n {} image(s) uploaded'.format(len(filtered_list)), False)
 
 
 if __name__ == '__main__':
