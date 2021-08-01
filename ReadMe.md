@@ -53,4 +53,4 @@ confirm the data class and angle,
 
 
 
-
+[![Alt text](https://github.com/Mr-TalhaIlyas/PlantsDataUploader/blob/master/screens/ezgif.com-gif-maker%20(1).gif)](https://www.youtube.com/watch?v=FLjeoDETX1U)
