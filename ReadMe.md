@@ -15,7 +15,7 @@ Data is collected at three different angles as shown in figure below (i.e., 0, 4
 
 - ### `.exe` File
 
-For `.exe` file click the following [Google Drive Link](https://drive.google.com/drive/folders/1PYbKXt1IecuZO_rHEOOolLGP_W7Y8WSM?usp=sharing)
+For `.exe` file click the following [Google Drive Link](https://drive.google.com/file/d/1ER7YHTnMk_vTEs1cG2IL7qgq4T__w7Te/view?usp=sharing)
 - #### Usage
 
 Inside the `mian` dir locate the `setup.bin` file and change the following lines accordingly, and then run the `main.exe` file.
